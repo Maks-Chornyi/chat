@@ -25,7 +25,15 @@ public class UserService {
         userRepo.deleteById(id);
     }
 
-    public User updateUser(User user) {
-        return userRepo.save(user);
+    public User updateUser(User newUser, Long id) {
+        User userForUpdate = findUserById(id);
+        userForUpdate.setId(id);
+        userForUpdate.setPassword(newUser.getPassword());
+        userForUpdate.setUsername(newUser.getUsername());
+        return userRepo.save(userForUpdate);
+    }
+
+    public User findUserById(Long id) {
+        return userRepo.findById(id).orElseThrow(RuntimeException::new);
     }
 }
