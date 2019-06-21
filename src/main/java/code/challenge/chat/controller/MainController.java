@@ -8,28 +8,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("restApi")
 public class MainController {
 
     @Autowired
     UserService userService;
 
-    @GetMapping()
+    @GetMapping("/users")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @PostMapping()
-    public User createUser(@RequestBody String username) {
-        User user = new User(username);
+    @PostMapping("/users")
+    public User createUser(@RequestBody User user) {
+//        User user = new User(username);
         return userService.createUser(user);
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 
-    @PutMapping()
+    @PutMapping("/users/{id}")
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
