@@ -4,10 +4,9 @@ import lombok.*;
 
 import javax.persistence.Entity;
 
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@Entity
+//@Data
+//@AllArgsConstructor
 public class Room {
 
 }
